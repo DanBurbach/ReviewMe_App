@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function About() {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <Text>About Screen</Text>
         </View>
     )

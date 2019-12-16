@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 
 export default function Review() {
     return (
-        <View style={StyleSheet.container}>
+        <View style={styles.container}>
             <Text>Review Screen</Text>
         </View>
     )
