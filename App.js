@@ -1,19 +1,30 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState} from 'react';
+import * as Font from 'expo-font';
+import { AppLoading } from 'expo';
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
+import Home from './screens/home';
+
+const getFonts = () => {
+  return Font.loadAsync({
+    'girassol-regular' : require('./assets/fonts/Girassol-Regular.ttf')
+  })
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  const[fontsLoaded, setFontsLoaded] = useState(false);
+
+  if (fontsLoaded){
+    return (
+      <Home/>
+    );
+  } else {
+    return(
+      <AppLoading
+        startAsync={getFonts}
+        onFinish={()=> setFontsLoaded(true)}
+      />
+    )
+  }
+}
+
+
