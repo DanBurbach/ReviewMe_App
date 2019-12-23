@@ -1,10 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet } from 'react-native';
 
-export default function Home() {
+export default function Home({ navigation }) {
+    const reviewPressHandler = () => {
+        navigation.navigate('Review');
+    }
+
     return (
         <View style={styles.container}>
             <Text style={styles.titleHomeText}>Home Screen</Text>
+            <Button title='GotoReview' onPress={reviewPressHandler}/>
         </View>
     )
 }
