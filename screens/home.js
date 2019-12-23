@@ -16,6 +16,6 @@ const styles = StyleSheet.create({
     },
     titleHomeText: {
         fontFamily: 'girassol-regular',
-        font: 18,
+        fontSize: 36,
     }
 });
