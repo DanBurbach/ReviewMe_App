@@ -1,15 +1,19 @@
 import React from 'react';
-import { Button, View, Text, StyleSheet } from 'react-native';
+import { Button, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 export default function Home({ navigation }) {
     const reviewPressHandler = () => {
-        navigation.navigate('Review');
+        navigation.push('Review');
     }
 
     return (
         <View style={styles.container}>
             <Text style={styles.titleHomeText}>Home Screen</Text>
-            <Button title='GotoReview' onPress={reviewPressHandler}/>
+            <TouchableOpacity style = {
+                    styles.ReviewButton
+            }>
+                <Button title='GotoReview' color='white' onPress={reviewPressHandler}/>
+            </TouchableOpacity>
         </View>
     )
 }
@@ -22,5 +26,9 @@ const styles = StyleSheet.create({
     titleHomeText: {
         fontFamily: 'girassol-regular',
         fontSize: 36,
+    },
+    ReviewButton: {
+        backgroundColor: 'orange',
+        color: 'white'
     }
 });
