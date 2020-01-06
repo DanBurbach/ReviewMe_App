@@ -1,5 +1,5 @@
 import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
+// import { createAppContainer } from 'react-navigation';
 import Home from '../screens/home';
 import Review from '../screens/review';
 
@@ -24,4 +24,4 @@ const HomeStack = createStackNavigator(screens, {defaultNavigationOptions: {
 }
 });
 
-export default createAppContainer(HomeStack);
+export default HomeStack;
