@@ -1,5 +1,4 @@
 import { createStackNavigator } from 'react-navigation-stack';
-// import { createAppContainer } from 'react-navigation';
 import Home from '../screens/home';
 import Review from '../screens/review';
 
