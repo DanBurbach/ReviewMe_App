@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import Card from '../shared/card';
 
 
 export default function Review({navigation}) {
@@ -11,9 +12,12 @@ export default function Review({navigation}) {
     return (
         <View style={styles.container}>
             <Text style= {styles.TitleText}>Review Screen</Text>
-            <Text style= {styles.ReviewList}>{ navigation.getParam('title')}</Text>
-            <Text style= {styles.ReviewList}>{ navigation.getParam('rating')}</Text>
-            <Text style= {styles.ReviewList}>{ navigation.getParam('body')}</Text>
+            <Card>
+                <Text style= {styles.ReviewList}>{ navigation.getParam('title')}</Text>
+                <Text style= {styles.ReviewList}>{ navigation.getParam('rating')}</Text>
+                <Text style= {styles.ReviewList}>{ navigation.getParam('body')}</Text>
+            </Card>
+
             <TouchableOpacity
                 style={styles.HomeButton}>
                 <Button 
