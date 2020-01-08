@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import Card from '../shared/card';
 
 export default function Home({ navigation }) {
 
