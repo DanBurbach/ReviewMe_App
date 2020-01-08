@@ -1,20 +1,28 @@
 import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Button, TouchableOpacity, Image } from 'react-native';
+
 import Card from '../shared/card';
+import { images } from '../styles/global';
 
 
 export default function Review({navigation}) {
-
     const pressHomeHandler = () => {
         navigation.goBack();
     }
+
+    const rating = navigation.getParam('rating');
 
     return (
         <View style={styles.container}>
             <Text style= {styles.TitleText}>Review Screen</Text>
             <Card>
                 <Text style= {styles.ReviewList}>{ navigation.getParam('title')}</Text>
-                <Text style= {styles.ReviewList}>{ navigation.getParam('rating')}</Text>
+
+                <View style={styles.rating}>
+                    <Text style= {styles.ReviewList}>ReviewMe rating: </Text>
+                    <Image source={images.ratings[rating]}
+                    />
+                </View>
                 <Text style= {styles.ReviewList}>{ navigation.getParam('body')}</Text>
             </Card>
 
