@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Button, View, Text, StyleSheet, TouchableOpacity, FlatList } from 'react-native';
+import { Button, StyleSheet, View, Text, TouchableOpacity, FlatList, Modal } from 'react-native';import { MaterialIcons } from '@expo/vector-icons';
 import Card from '../shared/card';
 
 export default function Home({ navigation }) {
+    const [modalOpen, setModalOpen] = useState(false);
 
     const [reviews, setReviews] = useState([
         { title: 'Big Trouble in Little China', rating: 5, body: 'lorem ipsum', key: '1'},
@@ -17,6 +18,20 @@ export default function Home({ navigation }) {
     return (
         <View style={styles.container}>
             <Text style={styles.titleHomeText}>Home Screen</Text>
+
+            <Modal visable={modalOpen} animationType='slide'>
+                <View style={StyleSheet.modalContent}>
+                <MaterialIcons
+                    name= 'close'
+                    size={24}
+                    // style= {}
+                    onPress={() => setModalOpen(false)}
+                />
+                    <Text>Hello from the modal</Text>
+                </View>
+            </Modal>
+            
+
             <FlatList data={reviews} renderItem={({ item }) => (
                     <TouchableOpacity onPress={() => navigation.navigate('Review', item)}>
                         <Card>
@@ -56,5 +71,8 @@ const styles = StyleSheet.create({
     ReviewButton: {
         backgroundColor: 'orange',
         color: 'white',
+    },
+    modalContent: {
+        padding: 60,
     }
 });
