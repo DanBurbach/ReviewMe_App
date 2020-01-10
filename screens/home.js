@@ -19,25 +19,32 @@ export default function Home({ navigation }) {
         <View style={styles.container}>
             <Text style={styles.titleHomeText}>Home Screen</Text>
 
-            <Modal visable={modalOpen} animationType='slide'>
-                <View style={StyleSheet.modalContent}>
-                <MaterialIcons
-                    name= 'close'
-                    size={24}
-                    // style= {}
-                    onPress={() => setModalOpen(false)}
-                />
-                    <Text>Hello from the modal</Text>
+            <Modal visible={modalOpen} animationType='slide'>
+                <View style={styles.modalContent}>
+                    <MaterialIcons 
+                        name='close'
+                        size={24} 
+                        style={{...styles.modalToggle, ...styles.modalClose}} 
+                        onPress={() => setModalOpen(false)} 
+                    />
+                    <Text>Hello from the modal :)</Text>
                 </View>
             </Modal>
-            
+
+
+            <MaterialIcons 
+                name='add' 
+                size={24} 
+                style={styles.modalToggle}
+                onPress={() => setModalOpen(true)} 
+            />
 
             <FlatList data={reviews} renderItem={({ item }) => (
-                    <TouchableOpacity onPress={() => navigation.navigate('Review', item)}>
-                        <Card>
-                            <Text style={styles.titleText}>{ item.title }</Text>
-                        </Card>
-                    </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate('Review', item)}>
+                    <Card>
+                        <Text style={styles.titleText}>{ item.title }</Text>
+                    </Card>
+                </TouchableOpacity>
                 )}
             />
             <TouchableOpacity 
@@ -73,6 +80,20 @@ const styles = StyleSheet.create({
         color: 'white',
     },
     modalContent: {
-        padding: 60,
+        flex: 1,
+    },
+    modalClose: {
+        marginTop: 20,
+        marginBottom: 0,
+    },
+    modalToggle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginBottom: 10,
+        borderWidth: 1,
+        borderColor: '#f2f2f2',
+        padding: 10,
+        borderRadius: 10,
+        alignSelf: 'center',
     }
 });
