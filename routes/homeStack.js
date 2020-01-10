@@ -1,7 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation-stack';
 
-
 import Home from '../screens/home';
 import Review from '../screens/review';
 import Header from '../shared/header';
