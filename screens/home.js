@@ -12,6 +12,15 @@ export default function Home({ navigation }) {
         { title: 'Plan 9 From Outer Space', rating: 1, body: 'lorem ipsum', key: '2'},
         { title: '12 Monkeys', rating: 3, body: 'lorem ipsum', key: '3'},
     ]);
+
+    const addReview = (review) => {
+        // for simplicity
+        review.key = Math.random().toString();
+        setReviews((currentReviews) => {
+            return[review, ...currentReviews];
+        })
+        setModalOpen(false);
+    }
     
     const reviewPressHandler = () => {
         navigation.push('Review');
@@ -29,7 +38,7 @@ export default function Home({ navigation }) {
                         style={{...styles.modalToggle, ...styles.modalClose}} 
                         onPress={() => setModalOpen(false)} 
                     />
-                    <ReviewForm/>
+                    <ReviewForm addReview={addReview}/>
                 </View>
             </Modal>
 

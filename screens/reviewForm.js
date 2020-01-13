@@ -2,13 +2,14 @@ import React from 'react';
 import { StyleSheet, Button, TextInput, View, Text } from 'react-native';
 import { Formik } from 'formik';
 
-export default function ReviewForm () {
+export default function ReviewForm ({ addReview }) {
 
     return(
         <View style={styles.container}>
             <Formik
                 initialValues={{ title: '', body: '', rating: '' }}
                 onSubmit={(values)=> {
+                    addReview(values);
                     console.log(values);
                 }}
             >
@@ -28,9 +29,10 @@ export default function ReviewForm () {
                         />
                         <TextInput
                             style={styles.input}
-                            placeholder='Review Rating'
+                            placeholder='Review Rating (1-5)'
                             onChangeText={formikprops.handleChange('rating')}
                             value={formikprops.values.rating}
+                            keyboardType='numeric'
                         />
                         <Button title='Submit' color='orange' onPress={formikprops.handleSubmit} />
                     </View>
