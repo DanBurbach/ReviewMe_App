@@ -83,8 +83,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     modalClose: {
-        marginTop: 20,
+        marginTop: 60,
         marginBottom: 0,
+        alignSelf: 'center',
     },
     modalToggle: {
         justifyContent: 'center',
