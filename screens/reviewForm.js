@@ -32,7 +32,7 @@ export default function ReviewForm () {
                             onChangeText={formikprops.handleChange('rating')}
                             value={formikprops.values.rating}
                         />
-                        <Button title='Submit' color='maroon' onPress={formikprops.handleSubmit} />
+                        <Button title='Submit' color='orange' onPress={formikprops.handleSubmit} />
                     </View>
                 )}
             </Formik>
@@ -44,5 +44,15 @@ const styles = StyleSheet.create({
             container: {
                 paddingTop: 40,
                 padding: 24,
-            }
+            },
+            input: {
+                borderWidth: 1, 
+                borderColor: '#ddd',
+                padding: 10,
+                margin: 2,
+                fontSize: 18,
+                borderRadius: 6,
+                fontFamily: 'girassol-regular',
+                fontSize: 24,
+            },
 })
