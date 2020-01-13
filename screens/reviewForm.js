@@ -9,10 +9,32 @@ export default function ReviewForm () {
             <Formik
                 initialValues={{ title: '', body: '', rating: '' }}
                 onSubmit={(values)=> {
-                    
+                    console.log(values);
                 }}
             >
-
+                {(formikprops) => (
+                    <View>
+                        <TextInput
+                            style={styles.input}
+                            placeholder='Review Title'
+                            onChangeText={formikprops.handleChange('title')}
+                            value={formikprops.values.title}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder='Review Body'
+                            onChangeText={formikprops.handleChange('body')}
+                            value={formikprops.values.body}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder='Review Rating'
+                            onChangeText={formikprops.handleChange('rating')}
+                            value={formikprops.values.rating}
+                        />
+                        <Button title='Submit' color='maroon' onPress={formikprops.handleSubmit} />
+                    </View>
+                )}
             </Formik>
         </View>
     )
