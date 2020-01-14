@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, Button, TextInput, View, Text } from 'react-native';
+import { StyleSheet, Button, TextInput, View, Text, TouchableOpacity } from 'react-native';
 import { Formik } from 'formik';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function ReviewForm ({ addReview }) {
 
@@ -26,9 +25,9 @@ export default function ReviewForm ({ addReview }) {
                             value={formikprops.values.title}
                         />
                         <TextInput
-                            multiline
                             style={styles.input}
-                            placeholder='Review Body'
+                            multiline
+                            placeholder='Review Summery'
                             onChangeText={formikprops.handleChange('body')}
                             value={formikprops.values.body}
                         />
@@ -73,7 +72,6 @@ const styles = StyleSheet.create({
             submitButton: {
                 margin: 2,
                 backgroundColor: 'orange',
-                color: 'white',
                 borderRadius: 6,
             }
 })
