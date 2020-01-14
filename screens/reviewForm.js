@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, TextInput, View, Text } from 'react-native';
 import { Formik } from 'formik';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function ReviewForm ({ addReview }) {
 
@@ -10,11 +11,13 @@ export default function ReviewForm ({ addReview }) {
                 initialValues={{ title: '', body: '', rating: '' }}
                 onSubmit={(values)=> {
                     addReview(values);
-                    console.log(values);
                 }}
             >
                 {(formikprops) => (
                     <View>
+                        <Text style={styles.newReviewHeader}>
+                            Add A Review
+                        </Text>
                         <TextInput
                             style={styles.input}
                             placeholder='Review Title'
@@ -22,6 +25,7 @@ export default function ReviewForm ({ addReview }) {
                             value={formikprops.values.title}
                         />
                         <TextInput
+                            multiline
                             style={styles.input}
                             placeholder='Review Body'
                             onChangeText={formikprops.handleChange('body')}
@@ -34,7 +38,9 @@ export default function ReviewForm ({ addReview }) {
                             value={formikprops.values.rating}
                             keyboardType='numeric'
                         />
-                        <Button title='Submit' color='orange' onPress={formikprops.handleSubmit} />
+                        <TouchableOpacity style={styles.submitButton}>
+                            <Button title='Submit' color='white' onPress={formikprops.handleSubmit} />
+                        </TouchableOpacity>
                     </View>
                 )}
             </Formik>
@@ -47,6 +53,12 @@ const styles = StyleSheet.create({
                 paddingTop: 40,
                 padding: 24,
             },
+            newReviewHeader: {
+                fontFamily: 'girassol-regular',
+                fontSize: 36,
+                padding: 5,
+                margin: 5,
+            },
             input: {
                 borderWidth: 1, 
                 borderColor: '#ddd',
@@ -57,4 +69,10 @@ const styles = StyleSheet.create({
                 fontFamily: 'girassol-regular',
                 fontSize: 24,
             },
+            submitButton: {
+                margin: 2,
+                backgroundColor: 'orange',
+                color: 'white',
+                borderRadius: 6,
+            }
 })
