@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, StyleSheet, View, Text, TouchableOpacity, FlatList, Modal } from 'react-native';import { MaterialIcons } from '@expo/vector-icons';
+import { StyleSheet, View, Text, TouchableOpacity, FlatList, Modal, TouchableWithoutFeedback, Keyboard } from 'react-native';import { MaterialIcons } from '@expo/vector-icons';
 
 import Card from '../shared/card';
 import ReviewForm from './reviewForm';
@@ -22,26 +22,28 @@ export default function Home({ navigation }) {
         setModalOpen(false);
     }
     
-    const reviewPressHandler = () => {
-        navigation.push('Review');
-    }
+    // const reviewPressHandler = () => {
+    //     navigation.push('Review');
+    // }
 
     return (
         <View style={styles.container}>
+
             <Text style={styles.titleHomeText}>Home Screen</Text>
 
             <Modal visible={modalOpen} animationType='slide'>
+                <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.modalContent}>
                     <MaterialIcons 
-                        name='close'
-                        size={24} 
-                        style={{...styles.modalToggle, ...styles.modalClose}} 
-                        onPress={() => setModalOpen(false)} 
+                    name='close'
+                    size={24} 
+                    style={{...styles.modalToggle, ...styles.modalClose}} 
+                    onPress={() => setModalOpen(false)} 
                     />
-                    <ReviewForm addReview={addReview}/>
+                    <ReviewForm addReview={addReview} />
                 </View>
+                </TouchableWithoutFeedback>
             </Modal>
-
 
             <MaterialIcons 
                 name='add' 
@@ -58,6 +60,7 @@ export default function Home({ navigation }) {
                 </TouchableOpacity>
                 )}
             />
+{/* 
             <TouchableOpacity 
                 style = {styles.ReviewButton}>
                 <Button 
@@ -67,7 +70,7 @@ export default function Home({ navigation }) {
                     fontFamily= 'girassol-regular'
                     onPress = {reviewPressHandler}
                 />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     )
 }
