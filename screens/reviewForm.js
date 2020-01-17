@@ -12,7 +12,7 @@ const reviewSchema = yup.object({
         min(8),
     rating: yup.number()
         .required()
-        .test('is-number-1-5', 'Rating must be a whole number 1 - 5', (val)=> {
+        .test('is-number-1-5', 'Rating must be a whole number 1 - 5', (val) => {
             return parseInt(val) < 6 && parseInt(val) > 0;
         })
 })
@@ -40,6 +40,8 @@ export default function ReviewForm ({ addReview }) {
                             onChangeText={formikprops.handleChange('title')}
                             value={formikprops.values.title}
                         />
+                        <Text style={styles.errorText}>{ formikprops.touched.title && formikprops.errors.title }</Text>
+
                         <TextInput
                             style={styles.input}
                             multiline
@@ -47,6 +49,8 @@ export default function ReviewForm ({ addReview }) {
                             onChangeText={formikprops.handleChange('body')}
                             value={formikprops.values.body}
                         />
+                        <Text style={styles.errorText}>{ formikprops.touched.body && formikprops.errors.body }</Text>
+
                         <TextInput
                             style={styles.input}
                             placeholder='Review Rating (1-5)'
@@ -54,6 +58,8 @@ export default function ReviewForm ({ addReview }) {
                             value={formikprops.values.rating}
                             keyboardType='numeric'
                         />
+                        <Text style={styles.errorText}>{ formikprops.touched.rating && formikprops.errors.rating }</Text>
+
                         <TouchableOpacity style={styles.submitButton}>
                             <Button title='Submit' color='white' onPress={formikprops.handleSubmit} />
                         </TouchableOpacity>
