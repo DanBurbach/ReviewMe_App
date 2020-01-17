@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Button, TextInput, View, Text, TouchableOpacity } from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import FlatButton from '../shared/button';
 
 const reviewSchema = yup.object({
     title: yup.string()
@@ -39,15 +40,17 @@ export default function ReviewForm ({ addReview }) {
                             placeholder='Review Title'
                             onChangeText={formikprops.handleChange('title')}
                             value={formikprops.values.title}
+                            onBlur={formikprops.handleBlur('title')}
                         />
                         <Text style={styles.errorText}>{ formikprops.touched.title && formikprops.errors.title }</Text>
 
                         <TextInput
                             style={styles.input}
-                            multiline
+                            multiline minHeight={100}
                             placeholder='Review Summery'
                             onChangeText={formikprops.handleChange('body')}
                             value={formikprops.values.body}
+                            onBlur={formikprops.handleBlur('body')}
                         />
                         <Text style={styles.errorText}>{ formikprops.touched.body && formikprops.errors.body }</Text>
 
@@ -57,12 +60,17 @@ export default function ReviewForm ({ addReview }) {
                             onChangeText={formikprops.handleChange('rating')}
                             value={formikprops.values.rating}
                             keyboardType='numeric'
+                            onBlur={formikprops.handleBlur('rating')}
                         />
                         <Text style={styles.errorText}>{ formikprops.touched.rating && formikprops.errors.rating }</Text>
 
+                        <FlatButton text="Submit" onPress={formikprops.handleSubmit} />
+
+                        {/* ================ below is another way of wrapping your button for stylesheet ==============================*/}
                         <TouchableOpacity style={styles.submitButton}>
                             <Button title='Submit' color='white' onPress={formikprops.handleSubmit} />
                         </TouchableOpacity>
+
                     </View>
                 )}
             </Formik>
@@ -95,5 +103,12 @@ const styles = StyleSheet.create({
                 margin: 2,
                 backgroundColor: 'orange',
                 borderRadius: 6,
+            },
+            errorText: {
+                color: 'crimson',
+                fontWeight: 'bold',
+                marginBottom: 10, 
+                marginTop: 6,
+                textAlign: 'center',
             }
 })
